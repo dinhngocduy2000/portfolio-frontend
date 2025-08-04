@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { TypewriterEffect } from "@/components/ui/typewriter-effect"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import Image from "next/image";
 
 export function Hero() {
   const containerVariants = {
@@ -17,7 +17,7 @@ export function Hero() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -28,33 +28,7 @@ export function Hero() {
         duration: 0.5,
       },
     },
-  }
-
-  const imageVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        type: "spring",
-        stiffness: 100,
-      },
-    },
-  }
-
-  const socialVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-      },
-    },
-  }
+  };
 
   const words = [
     { text: "Front-End" },
@@ -62,7 +36,9 @@ export function Hero() {
     { text: "&" },
     { text: "Full-Stack", className: "text-blue-500 dark:text-blue-400" },
     { text: "Developer", className: "text-blue-500 dark:text-blue-400" },
-  ]
+  ];
+
+  const yearsOfExperience = `${new Date().getFullYear() - 2022}+`;
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
@@ -123,21 +99,29 @@ export function Hero() {
                 className="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0"
                 variants={itemVariants}
               >
-                Passionate developer with 3+ years of experience in ReactJS, NextJS, and React Native. Building modern,
-                responsive applications with a focus on user experience and performance.
+                Passionate developer with {yearsOfExperience} years of
+                experience in ReactJS, NextJS, and React Native. Building
+                modern, responsive applications with a focus on user experience
+                and performance.
               </motion.p>
 
               <motion.div
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8"
                 variants={itemVariants}
               >
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Button size="lg" className="w-full sm:w-auto group">
                     <Link href="#contact" className="flex items-center gap-2">
                       Get In Touch
                       <motion.div
                         animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                       >
                         <Mail className="w-4 h-4" />
                       </motion.div>
@@ -145,13 +129,23 @@ export function Hero() {
                   </Button>
                 </motion.div>
 
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto"
+                  >
                     <Link href="#projects" className="flex items-center gap-2">
                       View My Work
                       <motion.div
                         animate={{ y: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                       >
                         <ArrowDown className="w-4 h-4" />
                       </motion.div>
@@ -160,14 +154,21 @@ export function Hero() {
                 </motion.div>
               </motion.div>
 
-              <motion.div className="flex justify-center lg:justify-start gap-6" variants={itemVariants}>
+              <motion.div
+                className="flex justify-center lg:justify-start gap-6"
+                variants={itemVariants}
+              >
                 {[
                   {
                     href: "https://www.linkedin.com/in/dylan-dinh-2262992b8/",
                     icon: Linkedin,
                     color: "hover:text-blue-600 dark:hover:text-blue-400",
                   },
-                  { href: "https://github.com", icon: Github, color: "hover:text-gray-900 dark:hover:text-white" },
+                  {
+                    href: "https://github.com",
+                    icon: Github,
+                    color: "hover:text-gray-900 dark:hover:text-white",
+                  },
                   {
                     href: "mailto:ngocduydinh2000@gmail.com",
                     icon: Mail,
@@ -176,13 +177,26 @@ export function Hero() {
                 ].map((social, index) => (
                   <motion.div
                     key={index}
-                    variants={socialVariants}
+                    variants={{
+                      hidden: { scale: 0, opacity: 0 },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          type: "spring",
+                          stiffness: 260,
+                          damping: 20,
+                        },
+                      },
+                    }}
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     <Link
                       href={social.href}
-                      target={social.href.startsWith("http") ? "_blank" : undefined}
+                      target={
+                        social.href.startsWith("http") ? "_blank" : undefined
+                      }
                       className={`text-gray-600 dark:text-gray-400 transition-colors ${social.color}`}
                     >
                       <social.icon className="w-6 h-6" />
@@ -195,9 +209,20 @@ export function Hero() {
             {/* Right side - Portrait image */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
               <motion.div
-                variants={imageVariants}
+                variants={{
+                  hidden: { scale: 0, opacity: 0 },
+                  visible: {
+                    scale: 1,
+                    opacity: 1,
+                    transition: {
+                      duration: 0.8,
+                      type: "spring",
+                      stiffness: 100,
+                    },
+                  },
+                }}
                 whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                transition={{ type: "spring", stiffness: 300, duration: 0.3 }}
                 className="relative"
               >
                 {/* Decorative elements behind the image */}
@@ -223,7 +248,7 @@ export function Hero() {
                       rotate: [0, 360],
                     }}
                     transition={{
-                      duration: 10,
+                      duration: 20,
                       repeat: Number.POSITIVE_INFINITY,
                       ease: "linear",
                     }}
@@ -232,10 +257,10 @@ export function Hero() {
                       <div className="relative w-full h-full rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                         {/* Replace this placeholder with your actual image */}
                         <Image
-                          src="/placeholder.svg?height=400&width=400"
+                          src="/profile-image.jpg?height=400&width=400"
                           alt="Dinh Ngoc Duy - Professional Portrait"
                           fill
-                          className="object-cover"
+                          className="object-cover -rotate-45"
                           priority
                         />
 
@@ -296,7 +321,9 @@ export function Hero() {
                   transition={{ delay: 1.5, duration: 0.5 }}
                 >
                   <div className="bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
-                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300">3+ Years Experience</p>
+                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {yearsOfExperience} Years Experience
+                    </p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -321,5 +348,5 @@ export function Hero() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
