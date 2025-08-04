@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
 
 export function TechStackCarousel() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const techStack = [
     {
@@ -85,10 +85,10 @@ export function TechStackCarousel() {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
       color: "bg-pink-500",
     },
-  ]
+  ];
 
   // Duplicate the array to create seamless infinite scroll
-  const duplicatedTechStack = [...techStack, ...techStack, ...techStack]
+  const duplicatedTechStack = [...techStack, ...techStack, ...techStack];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -99,21 +99,7 @@ export function TechStackCarousel() {
         staggerChildren: 0.05,
       },
     },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0, scale: 0.8 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        type: "spring",
-        stiffness: 100,
-      },
-    },
-  }
+  };
 
   return (
     <section
@@ -167,7 +153,19 @@ export function TechStackCarousel() {
               {duplicatedTechStack.map((tech, index) => (
                 <motion.div
                   key={`row1-${index}`}
-                  variants={itemVariants}
+                  variants={{
+                    hidden: { y: 20, opacity: 0, scale: 0.8 },
+                    visible: {
+                      y: 0,
+                      opacity: 1,
+                      scale: 1,
+                      transition: {
+                        duration: 0.5,
+                        type: "spring",
+                        stiffness: 100,
+                      },
+                    },
+                  }}
                   whileHover={{
                     scale: 1.1,
                     y: -10,
@@ -190,7 +188,9 @@ export function TechStackCarousel() {
                           className="w-10 h-10 object-contain filter brightness-0 invert"
                         />
                       </motion.div>
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white text-center">{tech.name}</h3>
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white text-center">
+                        {tech.name}
+                      </h3>
                     </div>
                   </div>
                 </motion.div>
@@ -221,7 +221,19 @@ export function TechStackCarousel() {
                 .map((tech, index) => (
                   <motion.div
                     key={`row2-${index}`}
-                    variants={itemVariants}
+                    variants={{
+                      hidden: { y: 20, opacity: 0, scale: 0.8 },
+                      visible: {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        transition: {
+                          duration: 0.5,
+                          type: "spring",
+                          stiffness: 100,
+                        },
+                      },
+                    }}
                     whileHover={{
                       scale: 1.1,
                       y: -10,
@@ -244,7 +256,9 @@ export function TechStackCarousel() {
                             className="w-10 h-10 object-contain filter brightness-0 invert"
                           />
                         </motion.div>
-                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white text-center">{tech.name}</h3>
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white text-center">
+                          {tech.name}
+                        </h3>
                       </div>
                     </div>
                   </motion.div>
@@ -254,11 +268,26 @@ export function TechStackCarousel() {
         </div>
 
         {/* Mobile Grid (Hidden on larger screens) */}
-        <motion.div className="lg:hidden grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8" variants={containerVariants}>
+        <motion.div
+          className="lg:hidden grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8"
+          variants={containerVariants}
+        >
           {techStack.map((tech, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
+              variants={{
+                hidden: { y: 20, opacity: 0, scale: 0.8 },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                  scale: 1,
+                  transition: {
+                    duration: 0.5,
+                    type: "spring",
+                    stiffness: 100,
+                  },
+                },
+              }}
               whileHover={{
                 scale: 1.05,
                 transition: { type: "spring", stiffness: 300 },
@@ -280,7 +309,9 @@ export function TechStackCarousel() {
                       className="w-8 h-8 object-contain filter brightness-0 invert"
                     />
                   </motion.div>
-                  <h3 className="text-xs font-semibold text-gray-900 dark:text-white text-center">{tech.name}</h3>
+                  <h3 className="text-xs font-semibold text-gray-900 dark:text-white text-center">
+                    {tech.name}
+                  </h3>
                 </div>
               </div>
             </motion.div>
@@ -364,5 +395,5 @@ export function TechStackCarousel() {
         <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent pointer-events-none z-10" />
       </motion.div>
     </section>
-  )
+  );
 }

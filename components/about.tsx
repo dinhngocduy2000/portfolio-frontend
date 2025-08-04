@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Target, TrendingUp } from "lucide-react"
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { Card, CardContent } from "@/components/ui/card";
+import { Target, TrendingUp } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function About() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -19,7 +19,7 @@ export function About() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -30,9 +30,9 @@ export function About() {
         duration: 0.5,
       },
     },
-  }
+  };
 
-  const cardVariants = {
+  const cardVariants: Variants | undefined = {
     hidden: { scale: 0.8, opacity: 0 },
     visible: {
       scale: 1,
@@ -43,7 +43,7 @@ export function About() {
         stiffness: 100,
       },
     },
-  }
+  };
 
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-900" ref={ref}>
@@ -61,21 +61,29 @@ export function About() {
             About Me
           </motion.h2>
 
-          <motion.div className="grid md:grid-cols-2 gap-8 mb-12" variants={itemVariants}>
+          <motion.div
+            className="grid md:grid-cols-2 gap-8 mb-12"
+            variants={itemVariants}
+          >
             <motion.div
               initial={{ x: -50, opacity: 0 }}
               animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Professional Summary</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+                Professional Summary
+              </h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Dedicated and skilled Front-End Developer with 3-4 years of experience specializing in ReactJS,
-                TypeScript, React Native, and NextJS. Proficient in building responsive, high-performance web and mobile
-                applications using modern tools like Redux Toolkit, React Query, and RESTful APIs.
+                Dedicated and skilled Front-End Developer with 3-4 years of
+                experience specializing in ReactJS, TypeScript, React Native,
+                and NextJS. Proficient in building responsive, high-performance
+                web and mobile applications using modern tools like Redux
+                Toolkit, React Query, and RESTful APIs.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
-                Additional experience in back-end development with Python FastAPI, PostgreSQL, and Docker. Strong
-                problem-solving skills and a passion for learning.
+                Additional experience in back-end development with Python
+                FastAPI, PostgreSQL, and Docker. Strong problem-solving skills
+                and a passion for learning.
               </p>
             </motion.div>
 
@@ -84,7 +92,9 @@ export function About() {
               animate={isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Location & Contact</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+                Location & Contact
+              </h3>
               <div className="space-y-2 text-gray-600 dark:text-gray-400">
                 {[
                   "📍 Hoan Kiem District, Hanoi, Vietnam",
@@ -96,7 +106,9 @@ export function About() {
                   <motion.p
                     key={index}
                     initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                    animate={
+                      isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }
+                    }
                     transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                   >
                     {item}
@@ -106,7 +118,10 @@ export function About() {
             </motion.div>
           </motion.div>
 
-          <motion.div className="grid md:grid-cols-2 gap-6" variants={itemVariants}>
+          <motion.div
+            className="grid md:grid-cols-2 gap-6"
+            variants={itemVariants}
+          >
             <motion.div
               variants={cardVariants}
               whileHover={{ scale: 1.02, y: -5 }}
@@ -121,11 +136,14 @@ export function About() {
                     transition={{ duration: 0.5, delay: 0.8 }}
                   >
                     <Target className="w-6 h-6 text-blue-600" />
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Short-Term Goals</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      Short-Term Goals
+                    </h3>
                   </motion.div>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Transition deeper into a Full-Stack Developer role while exploring AI technologies, learning DevOps
-                    and AI knowledge to stay at the forefront of technology.
+                    Transition deeper into a Full-Stack Developer role while
+                    exploring AI technologies, learning DevOps and AI knowledge
+                    to stay at the forefront of technology.
                   </p>
                 </CardContent>
               </Card>
@@ -145,11 +163,14 @@ export function About() {
                     transition={{ duration: 0.5, delay: 1.0 }}
                   >
                     <TrendingUp className="w-6 h-6 text-green-600" />
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Long-Term Vision</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      Long-Term Vision
+                    </h3>
                   </motion.div>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Advance into a Technical Leader or Project Manager position, driving innovative projects and teams
-                    to deliver exceptional results.
+                    Advance into a Technical Leader or Project Manager position,
+                    driving innovative projects and teams to deliver exceptional
+                    results.
                   </p>
                 </CardContent>
               </Card>
@@ -158,5 +179,5 @@ export function About() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
