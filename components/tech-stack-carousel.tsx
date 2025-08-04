@@ -27,12 +27,12 @@ export function TechStackCarousel() {
     },
     {
       name: "NextJS",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-plain.svg",
       color: "bg-gray-900",
     },
     {
       name: "NodeJS",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
       color: "bg-green-500",
     },
     {
@@ -72,7 +72,7 @@ export function TechStackCarousel() {
     },
     {
       name: "React Query",
-      icon: "https://react-query-v3.tanstack.com/_next/static/images/emblem-light-628080660fddb35787ff6c77e97ca43e.svg",
+      icon: "/svgs/react-query.svg?height=40&width=40",
       color: "bg-red-500",
     },
     {
@@ -134,71 +134,7 @@ export function TechStackCarousel() {
         {/* Infinite Parallax Scrolling Carousel */}
         <div className="relative">
           {/* First row - Left to Right */}
-          <div className="mb-8 overflow-hidden">
-            <motion.div
-              className="flex gap-6 w-fit"
-              animate={{
-                x: [0, -100 * techStack.length],
-              }}
-              transition={{
-                x: {
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
-              style={{ width: `${duplicatedTechStack.length * 200}px` }}
-            >
-              {duplicatedTechStack.map((tech, index) => (
-                <motion.div
-                  key={`row1-${index}`}
-                  variants={{
-                    hidden: { y: 20, opacity: 0, scale: 0.8 },
-                    visible: {
-                      y: 0,
-                      opacity: 1,
-                      scale: 1,
-                      transition: {
-                        duration: 0.5,
-                        type: "spring",
-                        stiffness: 100,
-                      },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    y: -10,
-                    transition: { type: "spring", stiffness: 300 },
-                  }}
-                  className="flex-shrink-0 w-48"
-                >
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 group cursor-pointer">
-                    <div className="flex flex-col items-center space-y-4">
-                      <motion.div
-                        className={`w-16 h-16 rounded-full ${tech.color} flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-300`}
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <Image
-                          src={tech.icon || "/placeholder.svg"}
-                          alt={tech.name}
-                          width={40}
-                          height={40}
-                          className="w-10 h-10 object-contain filter brightness-0 invert"
-                        />
-                      </motion.div>
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white text-center">
-                        {tech.name}
-                      </h3>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
 
-          {/* Second row - Right to Left (Parallax effect) */}
           <div className="overflow-hidden">
             <motion.div
               className="flex gap-6 w-fit"
